@@ -1,378 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Healing Spaces</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Healing Spaces -- Solace in the City</title>
   <style>
+    :root {
+      --maroon: #962524;
+      --beige: #f6f2ed;
+      --gap: 4px; /* fingernail‑width margin */
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      margin: 0;
-      font-size: 1.1rem;
-      font-family: 'Helvetica Neue', sans-serif;
-      background-color: #f6f2ed;
+      font-family: "Helvetica Neue", sans-serif;
+      background: var(--beige);
       color: #333;
-      padding: 0 2rem;
-      box-sizing: border-box;
+      overflow-x: hidden;
+      line-height: 1.6;
     }
-
-    header.site-header {
-      background: #f6f2ed;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      z-index: 1000;
-      box-sizing: border-box;
-    }
-
-    header img.logo {
-      height: 120px;
-      transition: all 0.3s ease;
-    }
-
-    nav {
-      white-space: nowrap;
-      overflow-x: auto;
-    }
-
-    nav a {
-      margin-left: 1.5rem;
-      text-decoration: none;
-      color: #962524;
-      font-weight: bold;
-    }
-
-    main {
-      padding-top: 140px;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding-bottom: 4rem;
-    }
-
-    section {
-      margin-bottom: 3rem;
-    }
-
-    h1, h2, h3 {
-      color: #962524;
-    }
-
-    .button-group {
+    header {
+      padding: 2rem;
       text-align: center;
-      margin-top: 2rem;
+      background: var(--beige);
     }
-
-    .button-group a {
-      display: inline-block;
-      background-color: #962524;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 5px;
-      text-decoration: none;
-      margin: 0.5rem;
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--maroon);
+      white-space: nowrap;
+      animation: fadeIn 1.5s ease;
     }
-
-    .image-grid {
+    .images {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 2rem;
     }
-
-    .image-grid img {
-      width: calc(33.333% - 0.67rem);
-      border-radius: 8px;
-      object-fit: cover;
+    .images img {
+      flex: 1 1 50%;
+      width: calc(50% - var(--gap));
+      margin: var(--gap);
+      display: block;
+      transition: transform 0.8s ease, opacity 0.8s ease;
+      will-change: transform, opacity;
     }
-
-  footer {
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
-  background-color: #962524;
-  color: #f6f2ed;
-  padding: 2rem 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  text-align: center;
-  box-sizing: border-box;
-  margin-top: 0;
-}
-
-footer {
-  background-color: #962524; /* Maroon bar */
-  color: #f6f2ed; /* Beige text */
-  width: 100vw;
-  padding: 2rem 1rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-
-
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  color: #f6f2ed;
-}
-
-.footer-content p {
-  margin: 0;
-  font-size: 1rem;
-}
-
-footer a {
-  color: #f6f2ed;
-  text-decoration: underline;
-  margin-left: 0.5rem;
-}
-
-footer i {
-  color: #f6f2ed;
-}
-    /* MOBILE ONLY */
-    @media (max-width: 768px) {
-      body {
-        padding: 0 1rem;
-      }
-
-      .image-grid {
-        flex-direction: column;
-      }
-
-      .image-grid img {
-        width: 100%;
-      }
-
-      nav {
-        display: none;
-      }
-
-      .hamburger {
-        display: block;
-        cursor: pointer;
-        font-size: 1.8rem;
-        color: #962524;
-        background: none;
-        border: none;
-        margin-left: auto;
-      }
-
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  left: 0; /* Anchor to left edge */
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  background-color: #f6f2ed;
-  z-index: 2000;
-  transition: transform 0.3s ease;
-  transform: translateX(100%); /* Slide in from right */
-  overflow-y: auto;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  box-sizing: border-box;
-}
-
-.mobile-menu.active {
-  transform: translateX(0);
-}
-
-      .mobile-menu a {
-        display: block;
-        margin: 1rem 0;
-        color: #962524;
-        text-decoration: none;
-        font-weight: bold;
-        text-align: left;
-      }
-
-      .close-top {
-        position: absolute;
-        top: 1rem;
-        right: 1.5rem;
-        font-size: 1.8rem;
-        background: none;
-        border: none;
-        color: #962524;
-        cursor: pointer;
-      }
-
-      .close-bottom {
-        margin-top: auto;
-        padding-top: 2rem;
-        font-size: 1.1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.3rem;
-        color: #962524;
-        cursor: pointer;
-        text-align: left;
-      }
-
-      .close-bottom span {
-        font-size: 1.2rem;
-      }
-
-      header img.logo {
-        height: auto;
-        width: auto;
-        max-height: 100px;
-        transition: all 0.3s ease;
-      }
-
-      header img.logo.scrolled {
-        width: 35vw;
-        height: auto;
-        max-height: none;
-      }
+    .images img:hover {
+      transform: scale(1.02);
+      opacity: .98;
     }
-
-    /* NON-MOBILE: hide hamburger */
-    @media (min-width: 769px) {
-      .hamburger {
-        display: none;
-      }
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+    }
+    section:nth-child(even) {
+      background: rgba(150,37,36,0.05);
+    }
+    h2 {
+      font-size: 2rem;
+      color: var(--maroon);
+      margin-bottom: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--maroon);
+    }
+    p, ul {
+      margin-bottom: 1rem;
+    }
+    ul li {
+      margin-left: 1.5rem;
+      list-style: disc;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--maroon);
+      color: var(--beige);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media(max-width:768px){
+      .images img { width: 100%; margin: var(--gap) 0; }
     }
   </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <img src="images/healing-spaces-logo.jpg" alt="Healing Spaces Logo" class="logo" id="main-logo">
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">How It Works</a>
-      <a href="#">Guardianship</a>
-      <a href="#">Contact</a>
-    </nav>
+  <header>
+    <h1>Healing Spaces</h1>
   </header>
 
-  <!-- Mobile Dropdown Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="close-top" onclick="toggleMenu()">&#10005;</button>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">How It Works</a>
-    <a href="#">Guardianship</a>
-    <a href="#">Contact</a>
-    <div class="close-bottom" onclick="toggleMenu()">
-      <span>&#10005;</span> Close
-    </div>
+  <div class="images">
+    <img src="https://unsplash.com/photos/0VGG7cqTwCo/download?force=true&w=1200" alt="Empty interior before transformation">
+    <img src="https://unsplash.com/photos/0sT9YhNgSEs/download?force=true&w=1200" alt="Calm interior after healing transformation">
   </div>
 
-  <main>
-    <!-- Hero Section -->
-    <section>
-      <h1>Welcome to Healing Spaces</h1>
-      <p>We transform vacant and underused buildings into nurturing places to live and work, with a model grounded in care, stability, and long-term stewardship. Healing Spaces connects building owners with responsible guardians who protect, inhabit, and activate space in ways that serve wellbeing and community.</p>
-      <div class="button-group">
-        <a href="our-approach.html">Our Approach</a>
-        <a href="#">Become a Guardian</a>
-        <a href="#">For Owners</a>
-      </div>
-      <div class="image-grid">
-        <img src="images/living-room.jpg" alt="Peaceful interior with natural light">
-        <img src="images/shared-garden-3.jpg" alt="Residents in a shared garden space">
-        <img src="images/partner-collage-2.jpg" alt="Logos and faces of project partners">
-      </div>
-    </section>
+  <section>
+    <h2>Our Vision</h2>
+    <p>We believe empty space holds the power to heal. Healing Spaces turns disused properties into beautiful, secure live–work sanctuaries for artists, wellness practitioners, and people experiencing housing precarity. Each space is designed with architectural care and therapeutic intent, offering respite in the city while safeguarding your property.</p>
+  </section>
 
-    <!-- Partner With Us -->
-    <section>
-      <h2>Partner With Healing Spaces</h2>
-      <p>Do you have an empty or underused property? We offer a trusted pathway to bring it back to life--caring for the building, ensuring it’s safely occupied, and aligning it with socially valuable use.</p>
-      <p>Guardianship through Healing Spaces offers peace of mind, careful oversight, and a sense of purpose. We work with owners who want to explore meaningful stewardship without the burdens of traditional letting or complex tenancy arrangements.</p>
-      <div class="image-grid">
-        <img src="images/meeting-owner.jpg" alt="Meeting between owner and healing spaces team">
-        <img src="images/interior-review.jpg" alt="Reviewing condition of a vacant interior">
-        <img src="images/guardian-agreement.jpg" alt="Agreement signing between guardian and property manager">
-      </div>
-    </section>
+  <section>
+    <h2>What We’re Asking For</h2>
+    <p>A 12‑month peppercorn lease (or flexible agreement) for your vacant property at [INSERT ADDRESS], enabling us to activate the space for meanwhile use through a managed guardianship model.</p>
+  </section>
 
-    <!-- Our Process -->
-    <section>
-      <h2>Our Process</h2>
-      <p>We begin with a conversation--about your space, your concerns, and your vision. From there, we propose a bespoke guardianship plan that fits your building, timeline, and values.</p>
-      <ol>
-        <li><strong>Initial Consultation:</strong> Understand your goals, risks, and requirements.</li>
-        <li><strong>Onboarding & Preparation:</strong> We inspect the building, discuss legal agreements, and prepare it for guardianship.</li>
-        <li><strong>Placement & Care:</strong> Carefully selected individuals move in. We provide ongoing support, inspections, and updates.</li>
-        <li><strong>Ongoing Partnership:</strong> We stay responsive, transparent, and aligned with your priorities.</li>
-      </ol>
-      <div class="image-grid">
-        <img src="images/designing-space.jpg" alt="Design discussion in an empty building">
-        <img src="images/planting-day.jpg" alt="Community members planting together">
-        <img src="images/interior-details.jpg" alt="Detail of calming interior setup">
-      </div>
-    </section>
+  <section>
+    <h2>Who We Are</h2>
+    <p>Healing Spaces is a project founded by experienced creative professionals, urban practitioners, and community developers with a track record of transforming spaces with purpose. We collaborate with architects like <strong>Roshni Studio</strong>, supported by local councils and property groups across London and Marseille.</p>
+    <p><strong>Website:</strong> healingframesphotography.com<br>
+       <strong>Email:</strong> admin@roshnistudio.com<br>
+       <strong>Phone:</strong> +44 7787 368799</p>
+  </section>
 
-    <!-- Testimonials & Trust -->
-    <section>
-      <h2>Trusted by People Who Care About Place</h2>
-      <p>Healing Spaces is supported by a growing network of artists, wellbeing professionals, designers, and community leaders. Our partners value trust, flexibility, and impact-driven use of space.</p>
-      <div class="image-grid">
-        <img src="images/testimonial-headshot-2.jpg" alt="Portrait of supportive partner">
-        <img src="images/event-community.jpg" alt="Photo from open day or community workshop">
-        <img src="images/partners-mosaic.jpg" alt="Montage of logos or collaborative groups">
-      </div>
-    </section>
-  </main>
-<footer>
-  <div class="footer-content">
-    <div class="contact-info">
-      <p>
-        <i class="fas fa-phone"></i>
-        <a href="tel:+447403769540">+44 (0) 7403 769540</a>
-      </p>
-      <p>
-        <i class="fas fa-envelope"></i>
-        <a href="mailto:healingspaces.property@gmail.com">healingspaces.property@gmail.com</a>
-         <p>
-      </p>
-       <p>
-    </div>
-    <p class="copyright">&copy; 2025 Healing Spaces. All rights reserved.</p>
-  </div>
-</footer>
+  <section>
+    <h2>What You Get in Return</h2>
+    <ul>
+      <li><strong>Protection & Maintenance:</strong> Daily presence, light maintenance, and property care.</li>
+      <li><strong>Flexibility:</strong> Agreements include a 30‑day break clause.</li>
+      <li><strong>Peace of Mind:</strong> Fully insured, low‑occupancy guardianship with codes and oversight.</li>
+      <li><strong>Social & PR Value:</strong> Aligns with ESG priorities, supports arts, mental health, and sustainable city living.</li>
+    </ul>
+  </section>
 
-  <script>
-    function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('active');
-    }
+  <section>
+    <h2>What It Looks Like</h2>
+    <p>Conceptual before‑&‑after mock‑ups above show the transformation from empty shell to calm, meaningful space.</p>
+  </section>
 
-    window.addEventListener('scroll', function () {
-      const logo = document.getElementById('main-logo');
-      if (window.innerWidth <= 768) {
-        if (window.scrollY > 10) {
-          logo.src = "images/healing-spaces-logo-text.jpg";
-          logo.classList.add('scrolled');
-        } else {
-          logo.src = "images/healing-spaces-logo.jpg";
-          logo.classList.remove('scrolled');
-        }
-      }
-    });
-  </script>
+  <section>
+    <h2>Sample Project Partners</h2>
+    <ul>
+      <li>Diane Mohsen (Park Estates)</li>
+      <li>Frost & Co (Central London)</li>
+      <li>Manna Society (housing & food support)</li>
+      <li>Ottolenghi Restaurants (community surplus donation)</li>
+      <li>Camden Council</li>
+      <li>Architect: Anthony Richardson ARP</li>
+      <li>Interior Partner: Roshni Studio</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What Success Looks Like</h2>
+    <p>In our Fitzrovia pilot, we prevented squatters, regenerated a disused retail property, and provided trauma‑informed housing for two practitioners and three creatives--within 48 hours of access.</p>
+  </section>
+
+  <section>
+    <h2>Ready to Talk?</h2>
+    <p>We’d love to offer a guided walkthrough or share further documents. Please contact us directly to explore next steps.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Healing Spaces – Solace in the City
+  </footer>
+
 </body>
 </html>
-
