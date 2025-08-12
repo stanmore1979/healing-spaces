@@ -1,160 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Healing Spaces -- Solace in the City</title>
   <style>
     :root {
       --maroon: #962524;
       --beige: #f6f2ed;
-      --gap: 4px; /* fingernail‑width margin */
+      --gap: 24px;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
+
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: "Helvetica Neue", sans-serif;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       background: var(--beige);
       color: #333;
-      overflow-x: hidden;
-      line-height: 1.6;
+      line-height: 1.7;
+      font-size: 1.125rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
     }
-    header {
-      padding: 2rem;
-      text-align: center;
-      background: var(--beige);
+
+    /* Logo */
+    #logo {
+      display: block;
+      margin: 0 auto 3rem;
+      height: 100px;
+      transition: height 0.3s ease;
+      filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
     }
-    header h1 {
-      font-size: 2.5rem;
+
+    /* Sections */
+    section {
+      margin-bottom: 5rem;
+    }
+
+    h2 {
+      font-size: 2.25rem;
       color: var(--maroon);
-      white-space: nowrap;
-      animation: fadeIn 1.5s ease;
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+      border-bottom: 4px solid var(--maroon);
+      padding-bottom: 0.3rem;
+      max-width: max-content;
     }
+
+    p {
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    ul {
+      list-style: disc inside;
+      max-width: 700px;
+      margin-left: 1rem;
+      margin-bottom: 1.5rem;
+      color: #444;
+    }
+
+    ul li {
+      margin-bottom: 0.8rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* Images */
     .images {
       display: flex;
+      gap: 2rem;
+      margin-bottom: 5rem;
+      justify-content: center;
       flex-wrap: wrap;
     }
+
     .images img {
-      flex: 1 1 50%;
-      width: calc(50% - var(--gap));
-      margin: var(--gap);
-      display: block;
-      transition: transform 0.8s ease, opacity 0.8s ease;
-      will-change: transform, opacity;
+      flex: 1 1 48%;
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(150,37,36,0.15);
+      transition: transform 0.4s ease;
+      cursor: default;
     }
+
     .images img:hover {
-      transform: scale(1.02);
-      opacity: .98;
+      transform: scale(1.03);
     }
-    section {
-      padding: 4rem 2rem;
-      max-width: 900px;
-      margin: auto;
-      position: relative;
-    }
-    section:nth-child(even) {
-      background: rgba(150,37,36,0.05);
-    }
-    h2 {
-      font-size: 2rem;
-      color: var(--maroon);
-      margin-bottom: 1rem;
-      position: relative;
-      overflow: hidden;
-    }
-    h2::after {
-      content: "";
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: var(--maroon);
-    }
-    p, ul {
-      margin-bottom: 1rem;
-    }
-    ul li {
-      margin-left: 1.5rem;
-      list-style: disc;
-    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
       background: var(--maroon);
       color: var(--beige);
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 6px;
+      max-width: 900px;
+      margin: 4rem auto 2rem;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @media(max-width:768px){
-      .images img { width: 100%; margin: var(--gap) 0; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem 1rem 3rem;
+      }
+      h2 {
+        font-size: 1.75rem;
+      }
+      .images {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .images img {
+        flex: 1 1 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-<img id="logo" src="images/healing-spaces-logo-text.jpg" alt="Healing Spaces logo" style="height: 80px; transition: height 0.3s ease;">
+  <img id="logo" src="images/healing-spaces-logo-text.jpg" alt="Healing Spaces logo" />
 
-  <div class="images">
-    <img src="https://unsplash.com/photos/0VGG7cqTwCo/download?force=true&w=1200" alt="Empty interior before transformation">
-    <img src="https://unsplash.com/photos/0sT9YhNgSEs/download?force=true&w=1200" alt="Calm interior after healing transformation">
+  <div class="images" aria-label="Before and after images of Healing Spaces transformation">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Empty interior before transformation" />
+    <img src="https://images.unsplash.com/photo-1501183638714-3c2b7a3b0b9d?auto=format&fit=crop&w=1200&q=80" alt="Calm interior after healing transformation" />
   </div>
 
   <section>
+    <h2>Healing Spaces: Transforming Homelessness</h2>
+    <p>Healing Spaces is an innovative project addressing street homelessness by combining art therapy, social capital, and live–work environments. Founded on lived experience, it offers a pioneering model that supports recovery through creative expression and community.</p>
+  </section>
+
+  <section>
     <h2>Our Vision</h2>
-    <p>We believe empty space holds the power to heal. Healing Spaces turns disused properties into beautiful, secure live–work sanctuaries for artists, wellness practitioners, and people experiencing housing precarity. Each space is designed with architectural care and therapeutic intent, offering respite in the city while safeguarding your property.</p>
+    <p>The project transforms disused residential properties in central London into temporary, high-social-capital living and working spaces. These offer peppercorn rents to therapists, architects, and artists who collaborate with street homeless individuals, providing not just accommodation but therapeutic and professional engagement.</p>
   </section>
 
   <section>
-    <h2>What We’re Asking For</h2>
-    <p>A 12‑month peppercorn lease (or flexible agreement) for your vacant property at [INSERT ADDRESS], enabling us to activate the space for meanwhile use through a managed guardianship model.</p>
+    <h2>How It Works</h2>
+    <p>Healing Spaces recognises that sustainable recovery depends on restoring social networks, trust, and purpose. By embedding vulnerable individuals within interdisciplinary communities, the project fosters reciprocal belonging and personal growth rather than paternalistic support.</p>
+    <p>This short-term intervention typically lasts a few months, providing holistic care and opportunities for creative and vocational development.</p>
   </section>
 
   <section>
-    <h2>Who We Are</h2>
-    <p>Healing Spaces is a project founded by experienced creative professionals, urban practitioners, and community developers with a track record of transforming spaces with purpose. We collaborate with architects like <strong>Roshni Studio</strong>, supported by local councils and property groups across London and Marseille.</p>
-    <p><strong>Website:</strong> healingframesphotography.com<br>
-       <strong>Email:</strong> admin@roshnistudio.com<br>
-       <strong>Phone:</strong> +44 7787 368799</p>
+    <h2>Our Alignment</h2>
+    <p>Aligned with Camden’s strategic goals, Healing Spaces aims to innovate rough sleeping outreach and homelessness services by repurposing empty units into healing-focused live–work hubs that break cycles of repeated homelessness by addressing trauma at its core.</p>
   </section>
 
   <section>
-    <h2>What You Get in Return</h2>
-    <ul>
-      <li><strong>Protection & Maintenance:</strong> Daily presence, light maintenance, and property care.</li>
-      <li><strong>Flexibility:</strong> Agreements include a 30‑day break clause.</li>
-      <li><strong>Peace of Mind:</strong> Fully insured, low‑occupancy guardianship with codes and oversight.</li>
-      <li><strong>Social & PR Value:</strong> Aligns with ESG priorities, supports arts, mental health, and sustainable city living.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>What It Looks Like</h2>
-    <p>Conceptual before‑&‑after mock‑ups above show the transformation from empty shell to calm, meaningful space.</p>
-  </section>
-
-  <section>
-    <h2>Sample Project Partners</h2>
-    <ul>
-      <li>Diane Mohsen (Park Estates)</li>
-      <li>Frost & Co (Central London)</li>
-      <li>Manna Society (housing & food support)</li>
-      <li>Ottolenghi Restaurants (community surplus donation)</li>
-      <li>Camden Council</li>
-      <li>Architect: Anthony Richardson ARP</li>
-      <li>Interior Partner: Roshni Studio</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>What Success Looks Like</h2>
-    <p>In our Fitzrovia pilot, we prevented squatters, regenerated a disused retail property, and provided trauma‑informed housing for two practitioners and three creatives--within 48 hours of access.</p>
-  </section>
-
-  <section>
-    <h2>Ready to Talk?</h2>
-    <p>We’d love to offer a guided walkthrough or share further documents. Please contact us directly to explore next steps.</p>
+    <h2>Collaboration & Partnership</h2>
+    <p>Healing Spaces invites collaboration with local authorities, housing providers, therapists, artists, and community organisations to pilot and scale this transformative approach. Through personal experience, professional expertise, and creative practice, it strives to rebuild lives and communities from the ground up.</p>
   </section>
 
   <footer>
